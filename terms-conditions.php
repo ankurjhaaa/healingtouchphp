@@ -11,7 +11,7 @@ include __DIR__ . '/includes/header.php';
 <div class="public-page min-h-screen bg-gray-50 font-sans text-gray-900 antialiased overflow-x-hidden pb-10 flex flex-col">
     <div class="bg-slate-900 mt-16 pt-16 pb-24 px-4 relative overflow-hidden">
         <div class="absolute inset-0 bg-grid-slate-800/[0.2] bg-[size:20px_20px]"></div>
-        <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-slate-900/50 to-transparent"></div>
+        <div class="absolute inset-x-0 top-0 h-40 bg-slate-900/40"></div>
         <div class="max-w-4xl mx-auto relative z-10 text-center">
             <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">Terms & Conditions</h1>
             <p class="text-slate-400 text-sm sm:text-lg max-w-2xl mx-auto mb-2">Please read these terms carefully before booking your appointment.</p>
@@ -20,7 +20,7 @@ include __DIR__ . '/includes/header.php';
     </div>
 
     <div class="max-w-4xl mx-auto px-4 w-full -mt-16 relative z-20 flex-1">
-        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl shadow-slate-900/5 border border-slate-100 flex flex-col gap-8">
+        <div class="bg-white rounded-md p-6 sm:p-10 shadow-xl shadow-slate-900/5 border border-slate-100 flex flex-col gap-8">
             
             <section>
                 <h2 class="text-xl sm:text-2xl font-black text-gray-900 mb-4 border-b border-gray-100 pb-3">
@@ -61,7 +61,7 @@ include __DIR__ . '/includes/header.php';
                 </div>
             </section>
 
-            <div class="mt-4 p-5 bg-amber-50 border border-amber-100 rounded-2xl">
+            <div class="mt-4 p-5 bg-amber-50 border border-amber-100 rounded-md">
                 <p class="text-sm md:text-base font-bold text-amber-800">
                     By continuing to use our services, you acknowledge that you have read, understood, and agreed to these terms. For any technical support, please dial <strong>96088 40667</strong>.
                 </p>

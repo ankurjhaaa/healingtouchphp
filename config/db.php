@@ -1,10 +1,16 @@
 <?php
 // config/db.php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-$host = '127.0.0.1';
+$host = 'localhost';
 $dbname = 'healingtouch';
 $username = 'ankurjha';
 $password = 'Ankur@1234';
+
+// Laravel Application URL for Booking
+$LARAVEL_BOOKING_URL = 'https://app.healingtouchpurnea.com';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);

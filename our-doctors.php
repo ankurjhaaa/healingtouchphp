@@ -41,7 +41,7 @@ include __DIR__ . '/includes/header.php';
             </div>
 
             <div class="sticky top-20 sm:top-24 z-20 mb-6 sm:mb-8">
-                <div class="bg-white/95 backdrop-blur rounded-2xl border border-gray-200 shadow-sm p-3 sm:p-4">
+                <div class="bg-white/95 backdrop-blur rounded-md border border-gray-200 shadow-sm p-3 sm:p-4">
                     <div class="relative w-full mb-3">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -52,7 +52,7 @@ include __DIR__ . '/includes/header.php';
                             type="text"
                             id="search-doctor"
                             placeholder="Search by name, specialty, or expertise..."
-                            class="pl-10 w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-beige-500 focus:border-beige-500 focus:outline-none text-sm sm:text-base"
+                            class="pl-10 w-full px-4 py-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-beige-500 focus:border-beige-500 focus:outline-none text-sm sm:text-base"
                         />
                     </div>
 
@@ -73,7 +73,7 @@ include __DIR__ . '/includes/header.php';
                 <?php if(count($doctors) > 0): ?>
                     <?php foreach($doctors as $doctor): ?>
                     <a href="/doctor-details.php?slug=<?php echo urlencode($doctor['slug']); ?>" 
-                       class="doctor-card group bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col"
+                       class="doctor-card group bg-white rounded-md border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col"
                        data-name="<?php echo strtolower(htmlspecialchars($doctor['name'])); ?>"
                        data-dept="<?php echo strtolower(htmlspecialchars($doctor['department_name'] ?? '')); ?>"
                        data-qual="<?php echo strtolower(htmlspecialchars(is_string($doctor['qualification']) ? str_replace('"', '', trim($doctor['qualification'], '[]')) : '')); ?>">
@@ -81,7 +81,7 @@ include __DIR__ . '/includes/header.php';
                         <div class="p-4 sm:p-5 flex-grow">
                             <div class="flex items-start gap-3 sm:gap-4">
                                 <div class="flex-shrink-0">
-                                    <img class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover border border-beige-200" src="<?php echo htmlspecialchars($doctor['image'] ?? '/assets/images/default.jpg'); ?>" alt="Dr. <?php echo htmlspecialchars($doctor['name']); ?>" />
+                                    <img class="w-20 h-20 sm:w-24 sm:h-24 rounded-md object-cover border border-beige-200" src="<?php echo htmlspecialchars($doctor['image'] ?? '/assets/images/default.jpg'); ?>" alt="Dr. <?php echo htmlspecialchars($doctor['name']); ?>" />
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h3 class="text-base sm:text-lg font-bold text-gray-800 truncate">Dr. <?php echo htmlspecialchars($doctor['name']); ?></h3>

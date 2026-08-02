@@ -16,7 +16,7 @@
                         <a href="/index.php" class="text-gray-600 hover:text-beige-700 transition-colors">Home</a>
                         <a href="/our-doctors.php" class="text-gray-600 hover:text-beige-700 transition-colors">Doctors</a>
                         <a href="/services.php" class="text-gray-600 hover:text-beige-700 transition-colors">Services</a>
-                        <a href="/book-appointment.php" class="text-gray-600 hover:text-beige-700 transition-colors">Book Appointment</a>
+                        <a href="<?php echo htmlspecialchars($LARAVEL_BOOKING_URL); ?>" class="text-gray-600 hover:text-beige-700 transition-colors">Book Appointment</a>
                         <a href="/gallery.php" class="text-gray-600 hover:text-beige-700 transition-colors">Gallery</a>
                         <a href="/contact-us.php" class="text-gray-600 hover:text-beige-700 transition-colors">Contact</a>
                     </div>

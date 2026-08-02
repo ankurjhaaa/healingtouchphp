@@ -20,7 +20,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Mission & Services Section -->
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 mb-16 items-center">
             <div>
-                <img src="/assets/images/heroImageHt.jpg" alt="Healing Touch Hospital" class="rounded-xl border border-gray-200 w-full" onerror="this.src='/assets/images/hospital-in-purnea-building.jpg'" />
+                <img src="/assets/images/heroImageHt.jpg" alt="Healing Touch Hospital" class="rounded-md border border-gray-200 w-full" onerror="this.src='/assets/images/hospital-in-purnea-building.jpg'" />
             </div>
             <div>
                 <h2 class="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h2>
@@ -44,7 +44,7 @@ include __DIR__ . '/includes/header.php';
         <div class="max-w-6xl mx-auto mt-16 mb-12 text-left">
             <h3 class="text-2xl font-semibold text-gray-800 mb-2">Ready to Prioritize Your Health?</h3>
             <p class="text-gray-600 mb-6">Book an appointment or visit us for compassionate, expert care today.</p>
-            <a href="/contact-us.php" class="inline-block px-8 py-3 bg-beige-600 text-white font-medium rounded-lg border border-beige-600 hover:bg-beige-700 transition-colors">
+            <a href="/contact-us.php" class="inline-block px-8 py-3 bg-beige-600 text-white font-medium rounded-md border border-beige-600 hover:bg-beige-700 transition-colors">
                 Contact Us
             </a>
         </div>

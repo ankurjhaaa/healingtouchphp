@@ -84,7 +84,7 @@ $services = [
 
             <div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
                 <div class="lg:w-2/3 w-full">
-                    <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-3 sm:p-4">
+                    <div class="bg-white rounded-md border border-gray-200 shadow-sm p-3 sm:p-4">
                         <div class="mb-3 flex items-center justify-between">
                             <h2 class="text-base sm:text-lg font-bold text-gray-800">Browse Services</h2>
                             <span class="text-xs text-gray-500">Tap service name</span>
@@ -103,7 +103,7 @@ $services = [
                         </div>
                     </div>
 
-                    <div id="service-display" class="mt-4 bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+                    <div id="service-display" class="mt-4 bg-white rounded-md border border-gray-200 overflow-hidden shadow-sm">
                         <div class="relative h-52 sm:h-64 bg-gray-200">
                             <img id="service-img" src="<?php echo $services[0]['image']; ?>" alt="<?php echo $services[0]['title']; ?>" class="absolute inset-0 h-full w-full object-cover object-center" />
                         </div>
@@ -115,7 +115,7 @@ $services = [
                 </div>
 
                 <aside class="lg:w-1/3 w-full space-y-4">
-                    <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-5">
+                    <div class="bg-white rounded-md border border-gray-200 shadow-sm p-4 sm:p-5">
                         <h4 class="font-bold text-base text-gray-800 mb-3 flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-beige-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -136,7 +136,7 @@ $services = [
                                 <span class="font-medium text-beige-600">Closed</span>
                             </div>
                         </div>
-                        <div class="mt-3 bg-beige-50 border border-beige-100 rounded-lg p-2.5">
+                        <div class="mt-3 bg-beige-50 border border-beige-100 rounded-md p-2.5">
                             <p class="text-beige-800 text-xs sm:text-sm flex items-center">
                                 <span class="text-red-600 mr-2">🚨</span>
                                 Emergency care available 24/7
@@ -144,10 +144,10 @@ $services = [
                         </div>
                     </div>
 
-                    <div class="hidden lg:block bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-5 sticky top-24">
+                    <div class="hidden lg:block bg-white rounded-md border border-gray-200 shadow-sm p-4 sm:p-5 sticky top-24">
                         <h4 class="font-bold text-gray-800 mb-2">Need Help?</h4>
                         <p class="text-gray-600 text-sm mb-3">Contact us for appointments or questions.</p>
-                        <a href="/contact-us.php" class="bg-beige-600 hover:bg-beige-700 text-white text-center rounded-lg border border-beige-600 py-2.5 px-4 block transition-colors duration-150 w-full">
+                        <a href="/contact-us.php" class="bg-beige-600 hover:bg-beige-700 text-white text-center rounded-md border border-beige-600 py-2.5 px-4 block transition-colors duration-150 w-full">
                             Call Now
                         </a>
                     </div>

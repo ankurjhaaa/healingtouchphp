@@ -29,7 +29,7 @@ include __DIR__ . '/includes/header.php';
         <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <?php if(count($images) > 0): ?>
                 <?php foreach($images as $image): ?>
-                <div class="bg-white rounded-lg border border-gray-200 p-2">
+                <div class="bg-white rounded-md border border-gray-200 p-2">
                     <img src="<?php echo htmlspecialchars($image['url'] ?? $image['image'] ?? '/assets/images/default.jpg'); ?>" alt="<?php echo htmlspecialchars($image['alt'] ?? $image['title'] ?? 'Gallery image'); ?>" class="w-full h-52 object-cover rounded-md" />
                     <?php if(!empty($image['title']) || !empty($image['alt'])): ?>
                         <p class="text-sm text-gray-700 mt-2 px-1 line-clamp-2"><?php echo htmlspecialchars($image['title'] ?? $image['alt']); ?></p>
@@ -37,7 +37,7 @@ include __DIR__ . '/includes/header.php';
                 </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <div class="col-span-full bg-white rounded-lg border border-gray-200 p-6 text-center text-gray-500">No gallery images found.</div>
+                <div class="col-span-full bg-white rounded-md border border-gray-200 p-6 text-center text-gray-500">No gallery images found.</div>
             <?php endif; ?>
         </div>
     </main>
