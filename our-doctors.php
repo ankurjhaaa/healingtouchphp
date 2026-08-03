@@ -29,161 +29,136 @@ try {
 include __DIR__ . '/includes/header.php';
 ?>
 
-<div class="public-page min-h-screen bg-gray-50 font-sans text-gray-900 antialiased overflow-x-hidden pb-16 lg:pb-0 flex flex-col">
-    <main class="flex-1 w-full pt-24 sm:pt-28 pb-8">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-6 sm:mb-8">
-                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">Meet Our Expert Doctors</h1>
-                <p class="mt-2 text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">Browse specialists and quickly book consultations with trusted professionals.</p>
-                <div class="mt-3 flex justify-center">
-                    <div class="h-1 w-20 bg-beige-600 rounded-full"></div>
+<!-- App Body Layout -->
+<div class="bg-slate-50 min-h-screen pb-6 flex flex-col">
+    <!-- Top Spacing -->
+    <div class="h-4 lg:h-6"></div>
+
+    <div class="container mx-auto px-4 max-w-7xl flex flex-col gap-4 lg:gap-6 flex-grow">
+        
+        <!-- Sticky Filters & Search -->
+        <div class="sticky top-[60px] lg:top-[70px] z-20 bg-slate-50/95 backdrop-blur-md py-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div class="relative w-full mb-3">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                 </div>
+                <input
+                    type="text"
+                    id="search-doctor"
+                    placeholder="Search by name, specialty..."
+                    class="pl-9 w-full px-4 py-3 bg-white shadow-sm rounded-md focus:ring-2 focus:ring-teal-500 focus:outline-none text-sm placeholder-slate-400 border border-slate-200"
+                />
             </div>
 
-            <div class="sticky top-20 sm:top-24 z-20 mb-6 sm:mb-8">
-                <div class="bg-white/95 backdrop-blur rounded-md border border-gray-200 shadow-sm p-3 sm:p-4">
-                    <div class="relative w-full mb-3">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <input
-                            type="text"
-                            id="search-doctor"
-                            placeholder="Search by name, specialty, or expertise..."
-                            class="pl-10 w-full px-4 py-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-beige-500 focus:border-beige-500 focus:outline-none text-sm sm:text-base"
-                        />
-                    </div>
-
-                    <div class="flex gap-2 overflow-x-auto pb-1 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" id="department-filters">
-                        <button type="button" class="filter-btn snap-start shrink-0 rounded-full border px-4 py-2 text-xs sm:text-sm font-semibold transition-colors bg-beige-600 border-beige-600 text-white" data-dept="all">
-                            All Departments
-                        </button>
-                        <?php foreach($departments as $dept): ?>
-                        <button type="button" class="filter-btn snap-start shrink-0 rounded-full border px-4 py-2 text-xs sm:text-sm font-semibold transition-colors bg-white border-gray-200 text-gray-700 hover:bg-beige-50 hover:border-beige-200" data-dept="<?php echo htmlspecialchars($dept); ?>">
-                            <?php echo htmlspecialchars($dept); ?>
-                        </button>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8" id="doctors-container">
-                <?php if(count($doctors) > 0): ?>
-                    <?php foreach($doctors as $doctor): ?>
-                    <a href="/doctor-details.php?slug=<?php echo urlencode($doctor['slug']); ?>" 
-                       class="doctor-card group bg-white rounded-md border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col"
-                       data-name="<?php echo strtolower(htmlspecialchars($doctor['name'])); ?>"
-                       data-dept="<?php echo strtolower(htmlspecialchars($doctor['department_name'] ?? '')); ?>"
-                       data-qual="<?php echo strtolower(htmlspecialchars(is_string($doctor['qualification']) ? str_replace('"', '', trim($doctor['qualification'], '[]')) : '')); ?>">
-                        
-                        <div class="p-4 sm:p-5 flex-grow">
-                            <div class="flex items-start gap-3 sm:gap-4">
-                                <div class="flex-shrink-0">
-                                    <img class="w-20 h-20 sm:w-24 sm:h-24 rounded-md object-cover border border-beige-200" src="<?php echo htmlspecialchars($doctor['image'] ?? '/assets/images/default.jpg'); ?>" alt="Dr. <?php echo htmlspecialchars($doctor['name']); ?>" />
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <h3 class="text-base sm:text-lg font-bold text-gray-800 truncate">Dr. <?php echo htmlspecialchars($doctor['name']); ?></h3>
-                                    <p class="text-xs sm:text-sm font-semibold text-beige-600 truncate"><?php echo htmlspecialchars($doctor['department_name'] ?? 'General'); ?></p>
-                                    <p class="mt-1 text-xs sm:text-sm font-medium text-gray-600 line-clamp-2">
-                                        <?php echo htmlspecialchars(is_string($doctor['qualification']) ? str_replace('"', '', trim($doctor['qualification'], '[]')) : '-'); ?>
-                                    </p>
-                                    <p class="mt-2 text-xs text-gray-500 line-clamp-1">
-                                        Available: <?php echo htmlspecialchars(is_string($doctor['available_days']) ? str_replace('"', '', trim($doctor['available_days'], '[]')) : '-'); ?>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="mt-4 flex items-center text-amber-500">
-                                <?php for($i=0; $i<5; $i++): ?>
-                                <svg class="w-4 h-4" fill="#906A39" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                                <?php endfor; ?>
-                            </div>
-                        </div>
-
-                        <div class="bg-gray-50 px-4 py-3 border-t border-gray-200 mt-auto">
-                            <span class="inline-flex items-center text-sm font-semibold text-beige-700 group-hover:text-beige-800">
-                                View Profile
-                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </span>
-                        </div>
-                    </a>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <div class="col-span-full py-16 text-center">
-                        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <h3 class="mt-2 text-xl font-medium text-gray-900">No doctors found</h3>
-                        <p class="mt-1 text-gray-500">Try adjusting your search criteria.</p>
-                    </div>
-                <?php endif; ?>
-            </div>
-
-            <div class="sm:hidden fixed bottom-20 right-4 z-40">
-                <a href="/contact-us.php" class="inline-flex items-center gap-2 bg-beige-600 hover:bg-beige-700 text-white rounded-full border border-beige-600 py-3 px-4 shadow-lg transition-colors duration-150">
-                    <span class="text-base">📞</span>
-                    <span class="text-sm font-semibold">Need Help</span>
-                </a>
+            <div class="flex gap-2 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-1" id="department-filters">
+                <button type="button" class="filter-btn snap-start shrink-0 rounded-md px-4 py-2 text-xs font-bold transition-colors bg-teal-700 text-white shadow-sm" data-dept="all">
+                    All
+                </button>
+                <?php foreach($departments as $dept): ?>
+                <button type="button" class="filter-btn snap-start shrink-0 rounded-md px-4 py-2 text-xs font-bold transition-colors bg-white text-slate-600 hover:bg-slate-100 shadow-sm border border-slate-200" data-dept="<?php echo htmlspecialchars($dept); ?>">
+                    <?php echo htmlspecialchars($dept); ?>
+                </button>
+                <?php endforeach; ?>
             </div>
         </div>
-    </main>
+
+        <!-- Doctors Grid (App Cards) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="doctors-container">
+            <?php if(count($doctors) > 0): ?>
+                <?php foreach($doctors as $doctor): ?>
+                <div class="doctor-card bg-white rounded-md shadow-sm border border-slate-200 flex flex-col hover:shadow-md transition-shadow overflow-hidden"
+                   data-name="<?php echo strtolower(htmlspecialchars($doctor['name'])); ?>"
+                   data-dept="<?php echo strtolower(htmlspecialchars($doctor['department_name'] ?? '')); ?>"
+                   data-qual="<?php echo strtolower(htmlspecialchars(is_string($doctor['qualification']) ? str_replace('"', '', trim($doctor['qualification'], '[]')) : '')); ?>">
+                    
+                    <div class="p-4 flex items-start gap-4">
+                        <div class="w-16 h-20 rounded-md overflow-hidden shrink-0 bg-slate-100 border border-slate-200">
+                            <img src="<?php echo htmlspecialchars($doctor['image'] ?? '/assets/images/default.jpg'); ?>" alt="Dr. <?php echo htmlspecialchars($doctor['name']); ?>" class="w-full h-full object-cover">
+                        </div>
+                        <div class="min-w-0 flex-1 pt-1">
+                            <h3 class="font-heading font-extrabold text-slate-900 text-base mb-1 truncate">Dr. <?php echo htmlspecialchars($doctor['name']); ?></h3>
+                            <div class="inline-flex items-center px-2 py-1 rounded-md bg-teal-50 border border-teal-100 mb-1.5">
+                                <span class="text-teal-700 text-[9px] font-bold uppercase tracking-wider truncate"><?php echo htmlspecialchars($doctor['department_name'] ?? 'General'); ?></span>
+                            </div>
+                            <p class="text-slate-500 text-[11px] truncate leading-tight" title="<?php echo htmlspecialchars(is_string($doctor['qualification']) ? str_replace('"', '', trim($doctor['qualification'], '[]')) : '-'); ?>">
+                                <?php echo htmlspecialchars(is_string($doctor['qualification']) ? str_replace('"', '', trim($doctor['qualification'], '[]')) : '-'); ?>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex border-t border-slate-200 bg-slate-50 mt-auto">
+                        <a href="/doctor-details.php?slug=<?php echo urlencode($doctor['slug']); ?>" class="flex-1 py-3 text-center text-[11px] font-bold text-slate-700 active:bg-slate-200 transition-colors border-r border-slate-200">Profile</a>
+                        <a href="<?php echo htmlspecialchars($LARAVEL_BOOKING_URL ?? '#'); ?>/?slug=<?php echo urlencode($doctor['slug']); ?>" class="flex-1 py-3 text-center text-[11px] font-bold text-teal-700 active:bg-teal-100 transition-colors">Book Now</a>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="col-span-full py-12 text-center text-slate-500 bg-white rounded-md shadow-sm border border-slate-200">
+                    <p class="text-sm font-medium">No doctors found.</p>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
 </div>
 
 <script>
-    $(document).ready(function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.doctor-card');
+        const searchInput = document.getElementById('search-doctor');
         let activeDept = 'all';
 
-        $('.filter-btn').on('click', function() {
-            $('.filter-btn').removeClass('bg-beige-600 border-beige-600 text-white').addClass('bg-white border-gray-200 text-gray-700 hover:bg-beige-50 hover:border-beige-200');
-            $(this).removeClass('bg-white border-gray-200 text-gray-700 hover:bg-beige-50 hover:border-beige-200').addClass('bg-beige-600 border-beige-600 text-white');
-            
-            activeDept = $(this).data('dept');
-            filterDoctors();
-        });
-
-        $('#search-doctor').on('keyup', function() {
-            filterDoctors();
-        });
-
         function filterDoctors() {
-            const searchTerm = $('#search-doctor').val().toLowerCase();
+            const searchTerm = searchInput.value.toLowerCase();
             let visibleCount = 0;
 
-            $('.doctor-card').each(function() {
-                const name = $(this).data('name');
-                const dept = $(this).data('dept');
-                const qual = $(this).data('qual');
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name');
+                const dept = card.getAttribute('data-dept');
+                const qual = card.getAttribute('data-qual');
                 
-                let matchesSearch = (name.indexOf(searchTerm) !== -1 || dept.indexOf(searchTerm) !== -1 || qual.indexOf(searchTerm) !== -1);
-                let matchesDept = (activeDept === 'all' || dept === activeDept.toLowerCase());
+                const matchesSearch = name.includes(searchTerm) || dept.includes(searchTerm) || qual.includes(searchTerm);
+                const matchesDept = (activeDept === 'all' || dept === activeDept.toLowerCase());
                 
                 if (matchesSearch && matchesDept) {
-                    $(this).show();
+                    card.style.display = 'flex';
                     visibleCount++;
                 } else {
-                    $(this).hide();
+                    card.style.display = 'none';
                 }
             });
             
             // Handle empty state
+            let noDocsMsg = document.getElementById('no-doctors-msg');
             if(visibleCount === 0) {
-                if($('#no-doctors-msg').length === 0) {
-                    $('#doctors-container').append(`
-                        <div id="no-doctors-msg" class="col-span-full py-16 text-center w-full">
-                            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <h3 class="mt-2 text-xl font-medium text-gray-900">No doctors found</h3>
-                        </div>
-                    `);
+                if(!noDocsMsg) {
+                    const msg = document.createElement('div');
+                    msg.id = 'no-doctors-msg';
+                    msg.className = 'col-span-full py-12 text-center text-slate-500 bg-white rounded-md shadow-sm border border-slate-200 w-full text-sm font-medium';
+                    msg.innerText = 'No doctors found.';
+                    document.getElementById('doctors-container').appendChild(msg);
                 }
             } else {
-                $('#no-doctors-msg').remove();
+                if(noDocsMsg) noDocsMsg.remove();
             }
+        }
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Reset all
+                buttons.forEach(b => {
+                    b.className = 'filter-btn snap-start shrink-0 rounded-md px-4 py-2 text-xs font-bold transition-colors bg-white text-slate-600 hover:bg-slate-100 shadow-sm border border-slate-200';
+                });
+                // Active class
+                btn.className = 'filter-btn snap-start shrink-0 rounded-md px-4 py-2 text-xs font-bold transition-colors bg-teal-700 text-white shadow-sm border border-transparent';
+                
+                activeDept = btn.getAttribute('data-dept');
+                filterDoctors();
+            });
+        });
+
+        if (searchInput) {
+            searchInput.addEventListener('input', filterDoctors);
         }
     });
 </script>
