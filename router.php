@@ -6,14 +6,28 @@ if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js|ico|woff|woff2|ttf|svg)$/', $_SERV
 
 $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
+// Redirect /login to homepage
+if ($path === '/login' || $path === '/login/') {
+    header("Location: /", true, 301);
+    exit;
+}
+
 if ($path === '/sitemap.xml') {
     include 'sitemap.php';
     return;
 }
 
-if (preg_match('/^\/best-([a-zA-Z0-9-]+)-in-purnea\/?$/', $path, $matches)) {
+if (preg_match('/^\/(best|top)-([a-zA-Z0-9-]+)-in-purnea\/?$/', $path, $matches)) {
+    $_GET['prefix'] = ucfirst($matches[1]);
+    $_GET['slug'] = $matches[2];
+    include 'speciality-page.php';
+    return;
+}
+
+if (preg_match('/^\/([a-zA-Z0-9-]+)-(hospital|specialist|treatment|clinic)-in-purnea\/?$/', $path, $matches)) {
     $_GET['slug'] = $matches[1];
-    include 'seo-landing.php';
+    $_GET['suffix'] = ucfirst($matches[2]);
+    include 'speciality-page.php';
     return;
 }
 

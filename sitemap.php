@@ -42,11 +42,15 @@ foreach ($static_pages as $path => $priority) {
 
 // Dynamic SEO Landing Pages (Departments)
 try {
-    $stmt = $pdo->query("SELECT name FROM departments WHERE (status = 1 OR status = '1') AND name IS NOT NULL");
+    $stmt = $pdo->query("SELECT name FROM departments WHERE name IS NOT NULL");
     while ($row = $stmt->fetch()) {
         $slug = strtolower(str_replace(' ', '-', trim($row['name'])));
         add_url($base_url . '/best-' . $slug . '-in-purnea', $date, 'weekly', '0.9');
-        add_url($base_url . '/best-' . $slug . '-doctor-in-purnea', $date, 'weekly', '0.9');
+        add_url($base_url . '/top-' . $slug . '-in-purnea', $date, 'weekly', '0.8');
+        add_url($base_url . '/' . $slug . '-hospital-in-purnea', $date, 'weekly', '0.8');
+        add_url($base_url . '/' . $slug . '-specialist-in-purnea', $date, 'weekly', '0.9');
+        add_url($base_url . '/' . $slug . '-treatment-in-purnea', $date, 'weekly', '0.8');
+        add_url($base_url . '/' . $slug . '-clinic-in-purnea', $date, 'weekly', '0.8');
     }
 } catch (Exception $e) {}
 

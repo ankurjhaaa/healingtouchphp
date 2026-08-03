@@ -80,6 +80,30 @@
                 </div>
             </div>
         </div>
+
+        <!-- Programmatic SEO Links (Screen Reader Only) -->
+        <div class="sr-only">
+            <h2>Popular Searches in Purnea</h2>
+            <ul>
+                <?php 
+                try {
+                    global $pdo;
+                    if (isset($pdo)) {
+                        $seo_stmt = $pdo->query("SELECT name FROM departments WHERE name IS NOT NULL");
+                        while ($row = $seo_stmt->fetch()) {
+                            $d_slug = strtolower(str_replace(' ', '-', trim($row['name'])));
+                            echo "<li><a href='/best-{$d_slug}-in-purnea'>Best {$row['name']} in Purnea</a></li>";
+                            echo "<li><a href='/top-{$d_slug}-in-purnea'>Top {$row['name']} in Purnea</a></li>";
+                            echo "<li><a href='/{$d_slug}-hospital-in-purnea'>{$row['name']} Hospital in Purnea</a></li>";
+                            echo "<li><a href='/{$d_slug}-specialist-in-purnea'>{$row['name']} Specialist in Purnea</a></li>";
+                            echo "<li><a href='/{$d_slug}-treatment-in-purnea'>{$row['name']} Treatment in Purnea</a></li>";
+                            echo "<li><a href='/{$d_slug}-clinic-in-purnea'>{$row['name']} Clinic in Purnea</a></li>";
+                        }
+                    }
+                } catch (Exception $e) {}
+                ?>
+            </ul>
+        </div>
     </footer>
 
     <!-- jQuery for AJAX / Booking logic -->

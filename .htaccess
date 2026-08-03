@@ -3,8 +3,16 @@ RewriteEngine On
 # Map sitemap.xml to sitemap.php
 RewriteRule ^sitemap\.xml$ sitemap.php [L]
 
-# SEO Landing Pages (e.g. /best-hospital-in-purnea, /best-cardiologist-doctor-in-purnea)
-RewriteRule ^best-([a-zA-Z0-9-]+)-in-purnea/?$ seo-landing.php?slug=$1 [L,QSA]
+# Redirect /login to homepage
+RewriteRule ^login/?$ / [R=301,L]
+
+# Programmatic SEO Landing Pages
+RewriteRule ^best-([a-zA-Z0-9-]+)-in-purnea/?$ speciality-page.php?slug=$1&prefix=Best [L,QSA]
+RewriteRule ^top-([a-zA-Z0-9-]+)-in-purnea/?$ speciality-page.php?slug=$1&prefix=Top [L,QSA]
+RewriteRule ^([a-zA-Z0-9-]+)-hospital-in-purnea/?$ speciality-page.php?slug=$1&suffix=Hospital [L,QSA]
+RewriteRule ^([a-zA-Z0-9-]+)-specialist-in-purnea/?$ speciality-page.php?slug=$1&suffix=Specialist [L,QSA]
+RewriteRule ^([a-zA-Z0-9-]+)-treatment-in-purnea/?$ speciality-page.php?slug=$1&suffix=Treatment [L,QSA]
+RewriteRule ^([a-zA-Z0-9-]+)-clinic-in-purnea/?$ speciality-page.php?slug=$1&suffix=Clinic [L,QSA]
 
 # If the request is not a file or directory
 RewriteCond %{REQUEST_FILENAME} !-f

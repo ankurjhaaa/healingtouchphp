@@ -2,19 +2,29 @@
 require_once __DIR__ . '/config/db.php';
 
 $slug = isset($_GET['slug']) ? trim($_GET['slug']) : 'hospital';
+$prefix = isset($_GET['prefix']) ? trim($_GET['prefix']) : '';
+$suffix = isset($_GET['suffix']) ? trim($_GET['suffix']) : '';
 
 // Create a nice readable title from slug
 $clean_slug = ucwords(str_replace('-', ' ', $slug));
-$seo_keyword = "Best $clean_slug in Purnea";
+
+$seo_keyword = "";
+if ($prefix) {
+    $seo_keyword = "$prefix $clean_slug in Purnea";
+} else if ($suffix) {
+    $seo_keyword = "$clean_slug $suffix in Purnea";
+} else {
+    $seo_keyword = "Best $clean_slug in Purnea";
+}
 
 $seo_title = "$seo_keyword | Healing Touch Hospital";
-$seo_description = "Looking for the $seo_keyword? Healing Touch Hospital provides world-class facilities and top specialists in Purnea. Book an appointment today!";
+$seo_description = "Looking for $seo_keyword? Healing Touch Hospital provides world-class facilities and top specialists in Purnea. Book an appointment today!";
 $active_page = 'home';
 
 // Try to find a matching department to show specific doctors
 $departments = [];
 try {
-    $stmt = $pdo->prepare("SELECT id, name FROM departments WHERE (status = 1 OR status = '1') AND name IS NOT NULL");
+    $stmt = $pdo->prepare("SELECT id, name FROM departments WHERE name IS NOT NULL");
     $stmt->execute();
     $departments = $stmt->fetchAll();
 } catch (Exception $e) {}
