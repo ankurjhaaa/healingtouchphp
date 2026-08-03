@@ -25,9 +25,9 @@ if (file_exists($envPath)) {
 }
 
 $host = $_ENV['DB_HOST'] ?? '127.0.0.1';
-$dbname = $_ENV['DB_DATABASE'] ?? 'healingtouch';
-$username = $_ENV['DB_USERNAME'] ?? 'ankurjha';
-$password = $_ENV['DB_PASSWORD'] ?? 'Ankur@1234';
+$dbname = $_ENV['DB_NAME'] ?? $_ENV['DB_DATABASE'] ?? 'healingtouch';
+$username = $_ENV['DB_USER'] ?? $_ENV['DB_USERNAME'] ?? 'ankurjha';
+$password = $_ENV['DB_PASS'] ?? $_ENV['DB_PASSWORD'] ?? 'Ankur@1234';
 
 // Laravel Application URL for Booking
 $LARAVEL_BOOKING_URL = $_ENV['LARAVEL_BOOKING_URL'] ?? 'https://app.healingtouchpurnea.com';
