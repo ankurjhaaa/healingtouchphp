@@ -87,21 +87,21 @@ include __DIR__ . '/includes/header.php';
     <!-- Overlapping Quick Links (Doctors, Services, Locate, Emergency) -->
     <div class="container mx-auto px-4 max-w-6xl relative z-20 -mt-16 md:-mt-20 mb-12">
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <a href="/our-doctors.php" class="bg-white rounded-md p-5 md:p-6 border border-slate-200 hover:border-slate-300 hover:-translate-y-1 transition-all flex flex-col group">
+            <a href="/our-doctors" class="bg-white rounded-md p-5 md:p-6 border border-slate-200 hover:border-slate-300 hover:-translate-y-1 transition-all flex flex-col group">
                 <div class="w-12 h-12 rounded-md bg-teal-50 flex items-center justify-center mb-4 group-hover:bg-teal-600 transition-colors">
                     <svg class="w-6 h-6 text-teal-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
                 </div>
                 <h3 class="font-bold text-slate-900 text-sm md:text-base mb-1">Doctors</h3>
                 <p class="text-slate-500 text-xs">View top specialists</p>
             </a>
-            <a href="/services.php" class="bg-white rounded-md p-5 md:p-6 border border-slate-200 hover:border-slate-300 hover:-translate-y-1 transition-all flex flex-col group">
+            <a href="/services" class="bg-white rounded-md p-5 md:p-6 border border-slate-200 hover:border-slate-300 hover:-translate-y-1 transition-all flex flex-col group">
                 <div class="w-12 h-12 rounded-md bg-sky-50 flex items-center justify-center mb-4 group-hover:bg-sky-600 transition-colors">
                     <svg class="w-6 h-6 text-sky-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
                 </div>
                 <h3 class="font-bold text-slate-900 text-sm md:text-base mb-1">Services</h3>
                 <p class="text-slate-500 text-xs">Comprehensive care</p>
             </a>
-            <a href="/contact-us.php" class="bg-white rounded-md p-5 md:p-6 border border-slate-200 hover:border-slate-300 hover:-translate-y-1 transition-all flex flex-col group">
+            <a href="/contact-us" class="bg-white rounded-md p-5 md:p-6 border border-slate-200 hover:border-slate-300 hover:-translate-y-1 transition-all flex flex-col group">
                 <div class="w-12 h-12 rounded-md bg-amber-50 flex items-center justify-center mb-4 group-hover:bg-amber-600 transition-colors">
                     <svg class="w-6 h-6 text-amber-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                 </div>
@@ -123,7 +123,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Header -->
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-xl md:text-2xl font-extrabold text-slate-900 font-heading">Our Doctors</h2>
-            <a href="/our-doctors.php" class="text-sm font-bold text-teal-700 hover:text-teal-800 transition-colors">See All Doctors</a>
+            <a href="/our-doctors" class="text-sm font-bold text-teal-700 hover:text-teal-800 transition-colors">See All Doctors</a>
         </div>
 
         <!-- Slider -->

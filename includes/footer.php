@@ -33,11 +33,11 @@
                 <div>
                     <h4 class="font-heading font-semibold text-white mb-4 text-lg">Quick Links</h4>
                     <ul class="space-y-2.5 text-sm">
-                        <li><a href="/index.php" class="hover:text-teal-400 transition-colors flex items-center gap-2"><span class="w-1 h-1 rounded-md bg-slate-600"></span> Home</a></li>
-                        <li><a href="/our-doctors.php" class="hover:text-teal-400 transition-colors flex items-center gap-2"><span class="w-1 h-1 rounded-md bg-slate-600"></span> Find a Doctor</a></li>
-                        <li><a href="/services.php" class="hover:text-teal-400 transition-colors flex items-center gap-2"><span class="w-1 h-1 rounded-md bg-slate-600"></span> Our Services</a></li>
+                        <li><a href="/" class="hover:text-teal-400 transition-colors flex items-center gap-2"><span class="w-1 h-1 rounded-md bg-slate-600"></span> Home</a></li>
+                        <li><a href="/our-doctors" class="hover:text-teal-400 transition-colors flex items-center gap-2"><span class="w-1 h-1 rounded-md bg-slate-600"></span> Find a Doctor</a></li>
+                        <li><a href="/services" class="hover:text-teal-400 transition-colors flex items-center gap-2"><span class="w-1 h-1 rounded-md bg-slate-600"></span> Our Services</a></li>
                         <li><a href="<?php echo htmlspecialchars($LARAVEL_BOOKING_URL); ?>" class="hover:text-teal-400 transition-colors flex items-center gap-2"><span class="w-1 h-1 rounded-md bg-slate-600"></span> Book Appointment</a></li>
-                        <li><a href="/contact-us.php" class="hover:text-teal-400 transition-colors flex items-center gap-2"><span class="w-1 h-1 rounded-md bg-slate-600"></span> Contact Us</a></li>
+                        <li><a href="/contact-us" class="hover:text-teal-400 transition-colors flex items-center gap-2"><span class="w-1 h-1 rounded-md bg-slate-600"></span> Contact Us</a></li>
                     </ul>
                 </div>
 
@@ -75,8 +75,8 @@
             <div class="mt-12 pt-8 border-t border-slate-800 text-xs text-slate-500 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p>© <?php echo date('Y'); ?> Healing Touch Hospital. All rights reserved.</p>
                 <div class="flex gap-4">
-                    <a href="/privacy-policy.php" class="hover:text-slate-300 transition-colors">Privacy Policy</a>
-                    <a href="/terms-conditions.php" class="hover:text-slate-300 transition-colors">Terms of Service</a>
+                    <a href="/privacy-policy" class="hover:text-slate-300 transition-colors">Privacy Policy</a>
+                    <a href="/terms-conditions" class="hover:text-slate-300 transition-colors">Terms of Service</a>
                 </div>
             </div>
         </div>

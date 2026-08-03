@@ -85,7 +85,7 @@ function is_mobile_active($page, $active_page) {
             <div class="flex justify-between items-center h-[70px] lg:h-[80px]">
                 
                 <!-- Logo Area -->
-                <a href="/index.php" class="flex items-center gap-3">
+                <a href="/" class="flex items-center gap-3">
                     <img src="/assets/images/healingTouchLogo.jpeg" alt="Healing Touch Logo" class="h-10 w-10 sm:h-12 sm:w-12 object-cover rounded-md border border-slate-100">
                     <div class="flex flex-col justify-center">
                         <div class="font-heading font-extrabold text-lg sm:text-2xl text-slate-900 tracking-tight leading-none">
@@ -97,13 +97,13 @@ function is_mobile_active($page, $active_page) {
 
                 <!-- Desktop Navigation (Hidden on Mobile) -->
                 <nav class="hidden lg:flex items-center gap-2">
-                    <a href="/index.php" class="px-4 py-2 text-sm transition-all duration-200 <?php echo is_active('home', $active_page); ?>">Home</a>
-                    <a href="/services.php" class="px-4 py-2 text-sm transition-all duration-200 <?php echo is_active('services', $active_page); ?>">Services</a>
-                    <a href="/our-doctors.php" class="px-4 py-2 text-sm transition-all duration-200 <?php echo is_active('doctors', $active_page); ?>">Doctors</a>
-                    <a href="/about-us.php" class="px-4 py-2 text-sm transition-all duration-200 <?php echo is_active('about', $active_page); ?>">About</a>
-                    <a href="/gallery.php" class="px-4 py-2 text-sm transition-all duration-200 <?php echo is_active('gallery', $active_page); ?>">Gallery</a>
-                    <a href="/careers.php" class="px-4 py-2 text-sm transition-all duration-200 <?php echo is_active('careers', $active_page); ?>">Careers</a>
-                    <a href="/contact-us.php" class="px-4 py-2 text-sm transition-all duration-200 <?php echo is_active('contact', $active_page); ?>">Contact</a>
+                    <a href="/" class="px-4 py-2 text-sm transition-all duration-200 <?php echo is_active('home', $active_page); ?>">Home</a>
+                    <a href="/services" class="px-4 py-2 text-sm transition-all duration-200 <?php echo is_active('services', $active_page); ?>">Services</a>
+                    <a href="/our-doctors" class="px-4 py-2 text-sm transition-all duration-200 <?php echo is_active('doctors', $active_page); ?>">Doctors</a>
+                    <a href="/about-us" class="px-4 py-2 text-sm transition-all duration-200 <?php echo is_active('about', $active_page); ?>">About</a>
+                    <a href="/gallery" class="px-4 py-2 text-sm transition-all duration-200 <?php echo is_active('gallery', $active_page); ?>">Gallery</a>
+                    <a href="/careers" class="px-4 py-2 text-sm transition-all duration-200 <?php echo is_active('careers', $active_page); ?>">Careers</a>
+                    <a href="/contact-us" class="px-4 py-2 text-sm transition-all duration-200 <?php echo is_active('contact', $active_page); ?>">Contact</a>
                 </nav>
 
                 <!-- Call to Action -->
@@ -128,7 +128,7 @@ function is_mobile_active($page, $active_page) {
     <nav class="lg:hidden fixed bottom-0 w-full bg-white/95 backdrop-blur-md border-t border-slate-200 z-50 pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
         <div class="flex justify-between items-center px-4 sm:px-6 h-[72px]">
             <!-- Home -->
-            <a href="/index.php" class="flex flex-col items-center justify-center gap-1 w-[20%] h-full <?php echo is_mobile_active('home', $active_page); ?>">
+            <a href="/" class="flex flex-col items-center justify-center gap-1 w-[20%] h-full <?php echo is_mobile_active('home', $active_page); ?>">
                 <svg class="w-6 h-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
@@ -136,7 +136,7 @@ function is_mobile_active($page, $active_page) {
             </a>
             
             <!-- Services -->
-            <a href="/services.php" class="flex flex-col items-center justify-center gap-1 w-[20%] h-full <?php echo is_mobile_active('services', $active_page); ?>">
+            <a href="/services" class="flex flex-col items-center justify-center gap-1 w-[20%] h-full <?php echo is_mobile_active('services', $active_page); ?>">
                 <svg class="w-6 h-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
@@ -144,7 +144,7 @@ function is_mobile_active($page, $active_page) {
             </a>
             
             <!-- Doctors -->
-            <a href="/our-doctors.php" class="flex flex-col items-center justify-center gap-1 w-[20%] h-full <?php echo is_mobile_active('doctors', $active_page); ?>">
+            <a href="/our-doctors" class="flex flex-col items-center justify-center gap-1 w-[20%] h-full <?php echo is_mobile_active('doctors', $active_page); ?>">
                 <svg class="w-6 h-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
@@ -170,7 +170,7 @@ function is_mobile_active($page, $active_page) {
         <div id="mobile-menu-modal-content" class="relative w-[85%] max-w-sm bg-slate-50 h-full flex flex-col shadow-2xl translate-x-full transition-transform duration-300 ease-out">
             <!-- Header (Matches Navbar) -->
             <div class="flex items-center justify-between px-4 h-[70px] border-b border-slate-200 bg-white shadow-sm shrink-0">
-                <a href="/index.php" class="flex items-center gap-3">
+                <a href="/" class="flex items-center gap-3">
                     <img src="/assets/images/healingTouchLogo.jpeg" alt="Healing Touch Logo" class="h-10 w-10 object-cover rounded-md border border-slate-100">
                     <div class="flex flex-col justify-center">
                         <div class="font-heading font-extrabold text-lg text-slate-900 tracking-tight leading-none">
@@ -188,7 +188,7 @@ function is_mobile_active($page, $active_page) {
             <div class="p-4 flex flex-col gap-3 overflow-y-auto flex-grow bg-slate-50">
                 <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1 px-1">Menu</p>
                 
-                <a href="/about-us.php" class="p-4 bg-white rounded-md border border-slate-200 shadow-sm text-slate-800 font-bold flex items-center justify-between hover:border-teal-300 transition-colors">
+                <a href="/about-us" class="p-4 bg-white rounded-md border border-slate-200 shadow-sm text-slate-800 font-bold flex items-center justify-between hover:border-teal-300 transition-colors">
                     <div class="flex items-center gap-3">
                         <div class="w-8 h-8 rounded-md bg-teal-50 flex items-center justify-center text-teal-700 border border-teal-100">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -198,7 +198,7 @@ function is_mobile_active($page, $active_page) {
                     <svg class="w-5 h-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </a>
                 
-                <a href="/gallery.php" class="p-4 bg-white rounded-md border border-slate-200 shadow-sm text-slate-800 font-bold flex items-center justify-between hover:border-teal-300 transition-colors">
+                <a href="/gallery" class="p-4 bg-white rounded-md border border-slate-200 shadow-sm text-slate-800 font-bold flex items-center justify-between hover:border-teal-300 transition-colors">
                     <div class="flex items-center gap-3">
                         <div class="w-8 h-8 rounded-md bg-teal-50 flex items-center justify-center text-teal-700 border border-teal-100">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
@@ -208,7 +208,7 @@ function is_mobile_active($page, $active_page) {
                     <svg class="w-5 h-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </a>
                 
-                <a href="/careers.php" class="p-4 bg-white rounded-md border border-slate-200 shadow-sm text-slate-800 font-bold flex items-center justify-between hover:border-teal-300 transition-colors">
+                <a href="/careers" class="p-4 bg-white rounded-md border border-slate-200 shadow-sm text-slate-800 font-bold flex items-center justify-between hover:border-teal-300 transition-colors">
                     <div class="flex items-center gap-3">
                         <div class="w-8 h-8 rounded-md bg-teal-50 flex items-center justify-center text-teal-700 border border-teal-100">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
@@ -218,7 +218,7 @@ function is_mobile_active($page, $active_page) {
                     <svg class="w-5 h-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </a>
                 
-                <a href="/contact-us.php" class="p-4 bg-white rounded-md border border-slate-200 shadow-sm text-slate-800 font-bold flex items-center justify-between hover:border-teal-300 transition-colors">
+                <a href="/contact-us" class="p-4 bg-white rounded-md border border-slate-200 shadow-sm text-slate-800 font-bold flex items-center justify-between hover:border-teal-300 transition-colors">
                     <div class="flex items-center gap-3">
                         <div class="w-8 h-8 rounded-md bg-teal-50 flex items-center justify-center text-teal-700 border border-teal-100">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>

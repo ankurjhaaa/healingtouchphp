@@ -80,7 +80,7 @@ include __DIR__ . '/includes/header.php';
                     <a href="<?php echo htmlspecialchars($LARAVEL_BOOKING_URL ?? '#'); ?>" class="flex-1 bg-white text-teal-900 active:bg-slate-100 px-4 py-3 rounded-md font-heading font-bold text-sm transition-colors border border-transparent">
                         Book Appointment
                     </a>
-                    <a href="/contact-us.php" class="flex-1 bg-teal-800 text-white border border-teal-700 active:bg-teal-700 px-4 py-3 rounded-md font-heading font-bold text-sm transition-colors">
+                    <a href="/contact-us" class="flex-1 bg-teal-800 text-white border border-teal-700 active:bg-teal-700 px-4 py-3 rounded-md font-heading font-bold text-sm transition-colors">
                         Contact Us
                     </a>
                 </div>

@@ -3,7 +3,7 @@ require_once __DIR__ . '/config/db.php';
 
 $slug = $_GET['slug'] ?? '';
 if (empty($slug)) {
-    header("Location: /our-doctors.php");
+    header("Location: /our-doctors");
     exit;
 }
 
@@ -23,7 +23,7 @@ try {
 }
 
 if (!$doctor) {
-    header("Location: /our-doctors.php");
+    header("Location: /our-doctors");
     exit;
 }
 
@@ -46,7 +46,7 @@ $fee = $doctor['fee'] ? $doctor['fee'] : '-';
 
     <div class="container mx-auto px-4 max-w-7xl flex flex-col gap-4 lg:gap-6 flex-grow">
         
-        <a href="/our-doctors.php"
+        <a href="/our-doctors"
             class="inline-flex items-center text-sm text-teal-700 font-bold hover:text-teal-800 transition-colors">
             <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
             Back to Doctors

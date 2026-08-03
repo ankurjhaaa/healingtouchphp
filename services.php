@@ -81,6 +81,14 @@ $services = [
         'icon' => '<svg class="w-6 h-6 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>'
     ],
 ];
+
+$page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
+$limit = 6;
+$total_services = count($services);
+$total_pages = max(1, ceil($total_services / $limit));
+$offset = ($page - 1) * $limit;
+
+$paginated_services = array_slice($services, $offset, $limit);
 ?>
 
 <!-- App Body Layout -->
@@ -101,7 +109,7 @@ $services = [
 
         <!-- Services Grid (App Cards) -->
         <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <?php foreach ($services as $service): ?>
+            <?php foreach ($paginated_services as $service): ?>
             <div class="bg-white rounded-md shadow-sm border border-slate-200 flex flex-col overflow-hidden">
                 <div class="h-40 sm:h-48 relative bg-slate-100">
                     <img src="<?php echo $service['image']; ?>" alt="<?php echo $service['title']; ?>" class="w-full h-full object-cover" />
@@ -137,6 +145,25 @@ $services = [
             </a>
         </section>
         
+        <!-- Pagination -->
+        <?php if($total_pages > 1): ?>
+        <div class="flex justify-center items-center gap-2 mt-8 mb-4">
+            <?php if($page > 1): ?>
+                <a href="/services?page=<?php echo $page - 1; ?>" class="px-3 py-2 bg-white border border-slate-200 text-slate-600 rounded-md hover:bg-slate-50 text-sm font-bold shadow-sm">Prev</a>
+            <?php endif; ?>
+            
+            <?php for($i = max(1, $page - 2); $i <= min($total_pages, $page + 2); $i++): ?>
+                <a href="/services?page=<?php echo $i; ?>" class="w-10 h-10 flex items-center justify-center rounded-md text-sm font-bold shadow-sm <?php echo $i === $page ? 'bg-teal-700 text-white border border-teal-700' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'; ?>">
+                    <?php echo $i; ?>
+                </a>
+            <?php endfor; ?>
+            
+            <?php if($page < $total_pages): ?>
+                <a href="/services?page=<?php echo $page + 1; ?>" class="px-3 py-2 bg-white border border-slate-200 text-slate-600 rounded-md hover:bg-slate-50 text-sm font-bold shadow-sm">Next</a>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
+
     </div>
 </div>
 
