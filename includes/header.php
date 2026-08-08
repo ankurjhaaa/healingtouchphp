@@ -22,8 +22,99 @@ function is_mobile_active($page, $active_page) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title><?php echo isset($seo_title) ? htmlspecialchars($seo_title) : 'Healing Touch Hospital'; ?></title>
-    <meta name="description" content="<?php echo isset($seo_description) ? htmlspecialchars($seo_description) : 'Healing Touch Hospital offers top-quality medical care in Purnea.'; ?>">
+    <title><?php echo isset($seo_title) ? htmlspecialchars($seo_title) : 'Healing Touch Hospital | Best Hospital in Purnea'; ?></title>
+    <meta name="description" content="<?php echo isset($seo_description) ? htmlspecialchars($seo_description) : 'Healing Touch Hospital offers top-quality medical care in Purnea. Book an appointment today!'; ?>">
+    <meta name="keywords" content="<?php echo isset($seo_keywords) ? htmlspecialchars($seo_keywords) : 'Healing Touch Hospital, Best Hospital in Purnea, Doctors in Purnea'; ?>">
+    
+    <?php 
+    // Determine the current canonical URL
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    $domainName = $_SERVER['HTTP_HOST'];
+    $current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $canonical_url = $protocol . $domainName . $current_path;
+    ?>
+    <link rel="canonical" href="<?php echo htmlspecialchars($canonical_url); ?>" />
+
+    <!-- Open Graph Tags for Social Media and Rich Snippets -->
+    <meta property="og:title" content="<?php echo isset($seo_title) ? htmlspecialchars($seo_title) : 'Healing Touch Hospital | Best Hospital in Purnea'; ?>" />
+    <meta property="og:description" content="<?php echo isset($seo_description) ? htmlspecialchars($seo_description) : 'Healing Touch Hospital offers top-quality medical care in Purnea. Book an appointment today!'; ?>" />
+    <meta property="og:url" content="<?php echo htmlspecialchars($canonical_url); ?>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="<?php echo $protocol . $domainName; ?>/assets/images/healingTouchLogo.jpeg" />
+    <meta property="og:site_name" content="Healing Touch Hospital" />
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo isset($seo_title) ? htmlspecialchars($seo_title) : 'Healing Touch Hospital | Best Hospital in Purnea'; ?>">
+    <meta name="twitter:description" content="<?php echo isset($seo_description) ? htmlspecialchars($seo_description) : 'Healing Touch Hospital offers top-quality medical care in Purnea. Book an appointment today!'; ?>">
+    <meta name="twitter:image" content="<?php echo $protocol . $domainName; ?>/assets/images/healingTouchLogo.jpeg">
+
+    <!-- JSON-LD Structured Data for Google Sitelinks and Rich Results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "MedicalOrganization",
+          "@id": "<?php echo $protocol . $domainName; ?>/#organization",
+          "name": "Healing Touch Hospital",
+          "url": "<?php echo $protocol . $domainName; ?>",
+          "logo": "<?php echo $protocol . $domainName; ?>/assets/images/healingTouchLogo.jpeg",
+          "image": "<?php echo $protocol . $domainName; ?>/assets/images/healingTouchLogo.jpeg",
+          "description": "Healing Touch Hospital provides world-class medical care and top specialists in Purnea.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bypass Road, near bus stand",
+            "addressLocality": "Purnea",
+            "addressRegion": "Bihar",
+            "postalCode": "854301",
+            "addressCountry": "IN"
+          },
+          "telephone": "+917903893945",
+          "email": "healingtouchhospitalpurnea@gmail.com",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+917903893945",
+            "contactType": "customer service",
+            "availableLanguage": ["English", "Hindi"]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "<?php echo $protocol . $domainName; ?>/#website",
+          "url": "<?php echo $protocol . $domainName; ?>",
+          "name": "Healing Touch Hospital",
+          "publisher": {
+            "@id": "<?php echo $protocol . $domainName; ?>/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "<?php echo $protocol . $domainName; ?>/our-doctors?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "<?php echo $protocol . $domainName; ?>/"
+            }
+            <?php if ($active_page !== 'home'): ?>
+            ,{
+              "@type": "ListItem",
+              "position": 2,
+              "name": "<?php echo ucfirst(str_replace('-', ' ', trim($current_path, '/'))); ?>",
+              "item": "<?php echo htmlspecialchars($canonical_url); ?>"
+            }
+            <?php endif; ?>
+          ]
+        }
+      ]
+    }
+    </script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

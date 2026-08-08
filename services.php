@@ -1,8 +1,9 @@
 <?php
 require_once __DIR__ . '/config/db.php';
 
-$seo_title = 'Our Services | Healing Touch Hospital';
-$seo_description = 'Explore our multispeciality care unit, ICU, NICU, Ultrasound, Neurosurgery, and more at Healing Touch Hospital.';
+$seo_title = 'Our Services & Facilities | Top Medical Treatments in Purnea | Healing Touch Hospital';
+$seo_description = 'Healing Touch Hospital offers 24/7 emergency care, ICU, pathology, maternity, and advanced surgeries in Purnea. Discover all our medical services.';
+$seo_keywords = 'Hospital Services Purnea, ICU in Purnea, Medical Facilities Purnea, Emergency Hospital Purnea, Healing Touch Services';
 $active_page = 'services';
 
 include __DIR__ . '/includes/header.php';
@@ -166,5 +167,34 @@ $paginated_services = array_slice($services, $offset, $limit);
 
     </div>
 </div>
+
+<?php 
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$domainName = $_SERVER['HTTP_HOST'];
+$current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$canonical_url = $protocol . $domainName . $current_path;
+?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  "name": "Healing Touch Hospital Services & Facilities",
+  "url": "<?php echo htmlspecialchars($canonical_url); ?>",
+  "description": "<?php echo htmlspecialchars($seo_description); ?>",
+  "parentOrganization": {
+    "@type": "MedicalOrganization",
+    "name": "Healing Touch Hospital",
+    "url": "<?php echo $protocol . $domainName; ?>/"
+  },
+  "medicalSpecialty": [
+    "Cardiology",
+    "Orthopedics",
+    "Pediatrics",
+    "Neurology",
+    "Gynecology",
+    "Emergency Medicine"
+  ]
+}
+</script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

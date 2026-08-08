@@ -27,8 +27,8 @@ if (!$doctor) {
     exit;
 }
 
-$seo_title = 'Dr. ' . htmlspecialchars($doctor['name']) . ' | Healing Touch Hospital';
-$seo_description = 'Book an appointment with Dr. ' . htmlspecialchars($doctor['name']) . ' at Healing Touch Hospital.';
+$seo_title = 'Dr. ' . htmlspecialchars($doctor['name']) . ' - ' . htmlspecialchars($doctor['department_name'] ?? 'Specialist') . ' in Purnea | Healing Touch Hospital';
+$seo_description = 'Book an appointment with Dr. ' . htmlspecialchars($doctor['name']) . ', top ' . htmlspecialchars($doctor['department_name'] ?? 'Specialist') . ' in Purnea at Healing Touch Hospital. Check availability, fees, and book online.';
 $active_page = 'doctors';
 
 include __DIR__ . '/includes/header.php';
@@ -173,5 +173,38 @@ $fee = $doctor['fee'] ? $doctor['fee'] : '-';
         </div>
     </div>
 </div>
+
+<?php 
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$domainName = $_SERVER['HTTP_HOST'];
+$current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$canonical_url = $protocol . $domainName . $current_path;
+$doc_image = !empty($doctor['image']) ? $protocol . $domainName . '/public/upload/doctors/' . $doctor['image'] : $protocol . $domainName . '/assets/images/healingTouchLogo.jpeg';
+?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  "name": "Dr. <?php echo htmlspecialchars($doctor['name']); ?>",
+  "url": "<?php echo htmlspecialchars($canonical_url); ?>",
+  "image": "<?php echo htmlspecialchars($doc_image); ?>",
+  "description": "<?php echo htmlspecialchars($seo_description); ?>",
+  "medicalSpecialty": "<?php echo htmlspecialchars($doctor['department_name'] ?? ''); ?>",
+  "worksFor": {
+    "@type": "MedicalOrganization",
+    "name": "Healing Touch Hospital",
+    "url": "<?php echo $protocol . $domainName; ?>/"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bypass Road, near bus stand",
+    "addressLocality": "Purnea",
+    "addressRegion": "Bihar",
+    "postalCode": "854301",
+    "addressCountry": "IN"
+  },
+  "telephone": "+917903893945"
+}
+</script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

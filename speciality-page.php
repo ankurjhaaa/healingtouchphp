@@ -29,11 +29,40 @@ try {
     $departments = $stmt->fetchAll();
 } catch (Exception $e) {}
 
+// Synonyms for colloquial / real-world searches
+$synonyms = [
+    'heart-doctor' => 'Cardiology',
+    'heart-specialist' => 'Cardiology',
+    'haddi-doctor' => 'Orthopedics',
+    'bone-doctor' => 'Orthopedics',
+    'orthopedic-surgeon' => 'Orthopedics',
+    'child-doctor' => 'Pediatrics',
+    'child-specialist' => 'Pediatrics',
+    'bacho-ka-doctor' => 'Pediatrics',
+    'lady-doctor' => 'Gynecology',
+    'pregnancy-doctor' => 'Gynecology',
+    'skin-doctor' => 'Dermatology',
+    'hair-doctor' => 'Dermatology',
+    'brain-doctor' => 'Neurology',
+    'neuro-doctor' => 'Neurology',
+    'stomach-doctor' => 'Gastroenterology',
+    'pet-ka-doctor' => 'Gastroenterology',
+    'sugar-doctor' => 'General Medicine',
+    'fever-doctor' => 'General Medicine'
+];
+
 $matched_dept_id = null;
 $matched_dept_name = null;
+$search_target = strtolower($slug);
+
+// If the slug matches a synonym, use the mapped department name for the search target
+if (isset($synonyms[$search_target])) {
+    $search_target = strtolower($synonyms[$search_target]);
+}
+
 foreach ($departments as $dept) {
-    // If the slug contains the department name (e.g. cardiology)
-    if (stripos($slug, strtolower($dept['name'])) !== false) {
+    // If the search target is found within the department name
+    if (stripos($search_target, strtolower($dept['name'])) !== false || stripos(strtolower($dept['name']), $search_target) !== false) {
         $matched_dept_id = $dept['id'];
         $matched_dept_name = $dept['name'];
         break;
@@ -164,7 +193,41 @@ include __DIR__ . '/includes/header.php';
         </div>
         <?php endif; ?>
 
+        <!-- Pagination goes here if needed -->
     </div>
 </div>
+
+<?php 
+// Add specific MedicalClinic Schema for programmatic SEO
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$domainName = $_SERVER['HTTP_HOST'];
+$current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$canonical_url = $protocol . $domainName . $current_path;
+?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  "name": "<?php echo htmlspecialchars($seo_keyword); ?> | Healing Touch Hospital",
+  "url": "<?php echo htmlspecialchars($canonical_url); ?>",
+  "logo": "<?php echo $protocol . $domainName; ?>/assets/images/healingTouchLogo.jpeg",
+  "image": "<?php echo $protocol . $domainName; ?>/assets/images/healingTouchLogo.jpeg",
+  "description": "<?php echo htmlspecialchars($seo_description); ?>",
+  "medicalSpecialty": "<?php echo htmlspecialchars($clean_slug); ?>",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bypass Road, near bus stand",
+    "addressLocality": "Purnea",
+    "addressRegion": "Bihar",
+    "postalCode": "854301",
+    "addressCountry": "IN"
+  },
+  "parentOrganization": {
+    "@type": "MedicalOrganization",
+    "name": "Healing Touch Hospital Purnea",
+    "url": "<?php echo $protocol . $domainName; ?>/"
+  }
+}
+</script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

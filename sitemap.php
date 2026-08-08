@@ -66,4 +66,24 @@ try {
     }
 } catch (Exception $e) {}
 
-echo "\n</urlset>";
+// Add Programmatic SEO Real-World Synonyms
+$synonyms = [
+    'heart-doctor', 'heart-specialist', 'haddi-doctor', 'bone-doctor', 
+    'orthopedic-surgeon', 'child-doctor', 'child-specialist', 'bacho-ka-doctor',
+    'lady-doctor', 'pregnancy-doctor', 'skin-doctor', 'hair-doctor', 
+    'brain-doctor', 'neuro-doctor', 'stomach-doctor', 'pet-ka-doctor', 
+    'sugar-doctor', 'fever-doctor'
+];
+
+foreach ($synonyms as $term) {
+    foreach ($patterns as $pattern) {
+        $url = $protocol . $domainName . str_replace('{speciality}', $term, $pattern);
+        echo "  <url>\n";
+        echo "    <loc>" . htmlspecialchars($url) . "</loc>\n";
+        echo "    <changefreq>weekly</changefreq>\n";
+        echo "    <priority>0.7</priority>\n";
+        echo "  </url>\n";
+    }
+}
+
+echo '</urlset>';

@@ -1,8 +1,9 @@
 <?php
 require_once __DIR__ . '/config/db.php';
 
-$seo_title = 'Healing Touch Hospital | Best Hospital in Purnea';
-$seo_description = 'Experience world-class medical care with our team of dedicated specialists and patient-centered approach. Your health is our priority.';
+$seo_title = 'Healing Touch Hospital Purnea | Best Multispeciality Hospital in Purnea';
+$seo_description = 'Healing Touch Hospital in Purnea is the top multispeciality hospital providing world-class medical care, 24/7 emergency services, and expert doctors.';
+$seo_keywords = 'Healing Touch Hospital, Healing Touch Hospital Purnea, Best Hospital in Purnea, Top Doctors in Purnea, Heart Doctor Purnea, Haddi Doctor, Lady Doctor Purnea, Child Specialist Purnea, Bacha Ka Doctor, Best Surgeon Purnea';
 $active_page = 'home';
 
 // Fetch Doctors

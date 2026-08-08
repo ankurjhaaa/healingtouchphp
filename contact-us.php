@@ -1,8 +1,9 @@
 <?php
 require_once __DIR__ . '/config/db.php';
 
-$seo_title = 'Contact Us | Healing Touch Hospital';
-$seo_description = 'Get in touch with Healing Touch Hospital for appointments, inquiries, and emergency care.';
+$seo_title = 'Contact Healing Touch Hospital Purnea | Emergency & Appointments';
+$seo_description = 'Get in touch with Healing Touch Hospital in Purnea. Call our 24/7 emergency helpline, book an appointment, or find directions to our facility.';
+$seo_keywords = 'Contact Healing Touch Hospital, Hospital Phone Number Purnea, Emergency Hospital Purnea, Healing Touch Address';
 $active_page = 'contact';
 
 // Site Settings / Defaults
@@ -180,6 +181,37 @@ include __DIR__ . '/includes/header.php';
         checkAvailability();
         setInterval(checkAvailability, 60000);
     });
+</script>
+
+<?php 
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$domainName = $_SERVER['HTTP_HOST'];
+$current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$canonical_url = $protocol . $domainName . $current_path;
+?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Healing Touch Hospital",
+  "url": "<?php echo htmlspecialchars($canonical_url); ?>",
+  "description": "<?php echo htmlspecialchars($seo_description); ?>",
+  "mainEntity": {
+    "@type": "MedicalOrganization",
+    "name": "Healing Touch Hospital",
+    "telephone": "+917903893945",
+    "email": "healingtouchhospitalpurnea@gmail.com",
+    "url": "<?php echo $protocol . $domainName; ?>/",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Bypass Road, near bus stand",
+      "addressLocality": "Purnea",
+      "addressRegion": "Bihar",
+      "postalCode": "854301",
+      "addressCountry": "IN"
+    }
+  }
+}
 </script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

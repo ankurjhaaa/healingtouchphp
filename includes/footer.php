@@ -100,6 +100,21 @@
                             echo "<li><a href='/{$d_slug}-clinic-in-purnea'>{$row['name']} Clinic in Purnea</a></li>";
                         }
                     }
+                    
+                    // Add real-world colloquial terms for deep crawling
+                    $synonyms = [
+                        'heart-doctor', 'heart-specialist', 'haddi-doctor', 'bone-doctor', 
+                        'orthopedic-surgeon', 'child-doctor', 'child-specialist', 'bacho-ka-doctor',
+                        'lady-doctor', 'pregnancy-doctor', 'skin-doctor', 'hair-doctor', 
+                        'brain-doctor', 'neuro-doctor', 'stomach-doctor', 'pet-ka-doctor', 
+                        'sugar-doctor', 'fever-doctor'
+                    ];
+                    
+                    foreach ($synonyms as $term) {
+                        $clean_name = ucwords(str_replace('-', ' ', $term));
+                        echo "<li><a href='/best-{$term}-in-purnea'>Best {$clean_name} in Purnea</a></li>";
+                        echo "<li><a href='/top-{$term}-in-purnea'>Top {$clean_name} in Purnea</a></li>";
+                    }
                 } catch (Exception $e) {}
                 ?>
             </ul>

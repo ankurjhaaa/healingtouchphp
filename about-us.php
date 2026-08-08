@@ -1,8 +1,9 @@
 <?php
 require_once __DIR__ . '/config/db.php';
 
-$seo_title = 'About Us | Healing Touch Hospital, Purnea (Bihar)';
-$seo_description = 'At Healing Touch Hospital, we are committed to providing compassionate, high-quality healthcare with a focus on patient well-being and comfort.';
+$seo_title = 'About Us | Healing Touch Hospital Purnea | Bihar\'s Top Medical Center';
+$seo_description = 'Learn about Healing Touch Hospital in Purnea. We are committed to providing the highest quality healthcare with top specialists and advanced facilities.';
+$seo_keywords = 'About Healing Touch Hospital, Best Hospital in Bihar, Top Medical Center Purnea, Healthcare Purnea';
 $active_page = 'about';
 
 include __DIR__ . '/includes/header.php';
@@ -89,5 +90,24 @@ include __DIR__ . '/includes/header.php';
 
     </div>
 </div>
+
+<?php 
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$domainName = $_SERVER['HTTP_HOST'];
+$current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$canonical_url = $protocol . $domainName . $current_path;
+?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "mainEntity": {
+    "@type": "MedicalOrganization",
+    "name": "Healing Touch Hospital",
+    "description": "<?php echo htmlspecialchars($seo_description); ?>",
+    "url": "<?php echo $protocol . $domainName; ?>/"
+  }
+}
+</script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

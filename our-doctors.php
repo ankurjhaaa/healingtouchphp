@@ -1,8 +1,9 @@
 <?php
 require_once __DIR__ . '/config/db.php';
 
-$seo_title = 'Our Doctors | Healing Touch Hospital';
-$seo_description = 'Browse specialists and quickly book consultations with trusted professionals at Healing Touch Hospital.';
+$seo_title = 'Our Doctors | Best Specialists & Surgeons in Purnea | Healing Touch Hospital';
+$seo_description = 'Find the best doctors, surgeons, and specialists in Purnea at Healing Touch Hospital. Browse our directory and book an appointment today.';
+$seo_keywords = 'Top Doctors in Purnea, Surgeons in Purnea, Best Specialists Purnea, Healing Touch Hospital Doctors';
 $active_page = 'doctors';
 
 $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
@@ -168,6 +169,27 @@ include __DIR__ . '/includes/header.php';
         if(search) url.searchParams.set('search', search);
         window.location.href = url.toString();
     }
+</script>
+
+<?php 
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$domainName = $_SERVER['HTTP_HOST'];
+$current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$canonical_url = $protocol . $domainName . $current_path;
+?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Our Doctors | Best Specialists & Surgeons in Purnea",
+  "url": "<?php echo htmlspecialchars($canonical_url); ?>",
+  "description": "<?php echo htmlspecialchars($seo_description); ?>",
+  "publisher": {
+    "@type": "MedicalOrganization",
+    "name": "Healing Touch Hospital",
+    "url": "<?php echo $protocol . $domainName; ?>/"
+  }
+}
 </script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
