@@ -123,5 +123,27 @@
 
     <!-- jQuery for AJAX / Booking logic -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <?php
+    // Check if current time in IST is between 7 AM and 6 PM (18:00)
+    $ist_timezone = new DateTimeZone('Asia/Kolkata');
+    $current_time = new DateTime('now', $ist_timezone);
+    $current_hour = (int)$current_time->format('G'); // 0 to 23
+
+    $show_call_button = ($current_hour >= 7 && $current_hour < 18);
+    ?>
+
+    <?php if ($show_call_button): ?>
+    <!-- Floating Call Button (Visible 7 AM to 6 PM) -->
+    <div class="fixed right-4 lg:right-6 bottom-[88px] lg:bottom-6 z-40">
+        <a href="tel:+917903893945" class="relative flex items-center justify-center w-14 h-14 bg-teal-600 text-white rounded-full shadow-lg hover:bg-teal-700 hover:scale-110 transition-transform duration-300">
+            <!-- Ping animation behind the button -->
+            <span class="absolute inline-flex h-full w-full rounded-full bg-teal-500 opacity-30 animate-ping"></span>
+            <svg class="w-6 h-6 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+        </a>
+    </div>
+    <?php endif; ?>
 </body>
 </html>
